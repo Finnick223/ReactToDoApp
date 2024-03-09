@@ -77,7 +77,7 @@ button:focus-visible {
 }
 
 .todos-item {
-  background-color: rgba(255, 0, 0, 0.217);
+  background-color: #646cff25;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
