@@ -1,12 +1,25 @@
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Input from '../src/components/Input'
 import List from '../src/components/List'
 import Button from '../src/components/Button'
 import './index.css';
+import TodoList from './components/TodoList';
 
 function App() {
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState({});
 
-  return (
+  useEffect(() => {
+    getTodos();
+  }, []);
+
+  const getTodos = () => {
+    fetch('/api/todo')
+      .then((res) => res.json())
+      .then((data) => setTodos(data.todos))
+      .catch((error) => console.log('Error fetching todos', error));
+  };
+    return (
     <>
       <header>
         <h1>ToDoApp</h1>
@@ -17,7 +30,12 @@ function App() {
           <Input />
           <Button />
         </section>
-        <List />
+      <TodoList
+        todos={todos}
+        getTodo={getTodos}
+        // setToggle={setToggle}
+        // deleteTodo={deleteTodo}
+      />
       </div>
     </>
   );

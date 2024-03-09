@@ -76,12 +76,13 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* @media (prefers-color-scheme: light) {
-  * {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.todos-item {
+  background-color: rgba(255, 0, 0, 0.217);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40vw;
+}
+/* .toolbox__btn {
+  color: white;
 } */
