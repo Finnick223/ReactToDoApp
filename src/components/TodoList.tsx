@@ -1,12 +1,12 @@
 import TodoItem from './TodoItems';
 
 interface TodoList {
-    todos: any,
-    getTodo: any,
-    setToggle: any,
-    deleteTodo: any
+  todos: any;
+  getTodo: any;
+  // setToggle: any;
+  deleteTodo: any;
 }
-const TodoList = ({ todos, getTodo, setToggle, deleteTodo }: TodoList) => {
+const TodoList = ({ todos, getTodo, deleteTodo }: TodoList) => {
   return (
     <div className="todos-container">
       {todos &&
@@ -15,7 +15,7 @@ const TodoList = ({ todos, getTodo, setToggle, deleteTodo }: TodoList) => {
             key={todo.id}
             todo={todo}
             getTodo={getTodo}
-            setToggle={setToggle}
+            // setToggle={setToggle}
             deleteTodo={deleteTodo}
           />
         ))}
