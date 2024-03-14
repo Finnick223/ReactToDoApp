@@ -91,6 +91,7 @@ function App() {
         toast.error('Error deleting note.');
       });
   };
+  
 
   // const handleAdd = () => {
   //   setInputs({ title: '', body: '' });

@@ -14,6 +14,8 @@ const Input = ({ todo, addTodo, updateTodo, inputs, setInputs }: {todo: any, add
       return;
     }
     updateTodo(todo.id, title);
+    todo.id=null;
+    setInputs({ title: ''})
   };
   const handleChange = (event: any) => {
     event.persist();
