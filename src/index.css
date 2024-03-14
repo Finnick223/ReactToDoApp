@@ -91,8 +91,10 @@ section {
 .todos-item__title{
   margin-right: auto;
 }
-.toolbox__btn {
-}
+
+/* .toolbox__btn {
+} */
+
 .todos-container{
   padding-top: 5vh;
 }

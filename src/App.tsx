@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState({});
+  const [todo, setTodo] = useState({ id: 0, title: '' });
   const [inputs, setInputs] = useState({ title: ''});
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function App() {
       .catch((error) => console.log('Error fetching todos', error));
   };
 
-  const getTodo = (id: any) => {
+  const getTodo = (id: number) => {
     fetch(`/api/todo/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -34,7 +34,7 @@ function App() {
       .catch((error) => console.log('brak todo', error));
   };
 
-  const addTodo = (title: any) => {
+  const addTodo = (title: string) => {
     if (!title) {
       toast.error('uzupelnij input');
       return;
@@ -58,7 +58,7 @@ function App() {
       });
   };
   
-  const updateTodo = (id: any, title: any) => {
+  const updateTodo = (id: number, title: string) => {
     if(!title) {
       toast.error('Please fill all the required input fields');
       return
@@ -69,7 +69,7 @@ function App() {
         title: title,
       }),
     })
-      .then((res) => {
+      .then(() => {
         getTodos();
         // setToggle(false);
         toast.success('Todo zostalo zmienione.');
@@ -80,9 +80,9 @@ function App() {
       });
   }
 
-  const deleteTodo = (id: any) => {
+  const deleteTodo = (id: number) => {
     fetch(`/api/todo/${id}`, { method: 'DELETE' })
-      .then((res) => {
+      .then(() => {
         getTodos();
         toast.success('todo usuniete');
       })
