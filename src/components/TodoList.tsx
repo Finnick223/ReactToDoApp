@@ -1,25 +1,21 @@
 import TodoItem from './TodoItems';
+import { TodoListProps, Todo } from './interfaces';
 
-interface TodoList {
-  todos: any;
-  getTodo: any;
-  // setToggle: any;
-  deleteTodo: any;
-}
-const TodoList = ({ todos, getTodo, deleteTodo }: TodoList) => {
+
+const TodoList = ({ todos, getTodo, deleteTodo }: TodoListProps) => {
   return (
     <div className="todos-container">
       {todos &&
-        todos.map((todo: any) => (
+        todos.map((todo: Todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             getTodo={getTodo}
-            // setToggle={setToggle}
             deleteTodo={deleteTodo}
           />
         ))}
     </div>
   );
 };
+
 export default TodoList;

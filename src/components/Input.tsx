@@ -1,26 +1,33 @@
-import { useEffect } from 'react';
+import { useEffect, ChangeEvent, FormEvent, useState } from 'react';
+import { InputProps } from "./interfaces"
 
-const Input = ({ todo, addTodo, updateTodo, inputs, setInputs }: {todo: any, addTodo: any, updateTodo:any, inputs:any, setInputs:any}) => {
+
+const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
+  const [inputs, setInputs] = useState({ title: '' });
+
   useEffect(() => {
     if (todo) {
       setInputs({ title: todo.title });
     }
-  }, [todo, setInputs]);
-  const handleSubmit = (event: any) => {
+  }, [todo]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { title } = inputs;
-    if (!todo.id) {
+    if (!todo?.id) {
       addTodo(title);
-      return;
+      setInputs({ title: '' });
+    } else {
+      updateTodo(todo.id, title);
+      todo.id=null;
+      setInputs({ title: '' });
     }
-    updateTodo(todo.id, title);
-    todo.id=null;
-    setInputs({ title: ''})
   };
-  const handleChange = (event: any) => {
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.persist();
-    setInputs((inputs: any) => ({
-      ...inputs,
+    setInputs((prevInputs) => ({
+      ...prevInputs,
       [event.target.name]: event.target.value,
     }));
   };
@@ -36,8 +43,8 @@ const Input = ({ todo, addTodo, updateTodo, inputs, setInputs }: {todo: any, add
         name="title"
         required
       />
-      <button type="submit" className="btn" onClick={handleSubmit}>
-        {todo.id ? 'Update Todo' : 'Add Todo'}
+      <button type="submit" className="btn">
+        {todo?.id ? 'Update Todo' : 'Add Todo'}
       </button>
     </form>
   );

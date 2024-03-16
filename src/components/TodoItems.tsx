@@ -1,12 +1,8 @@
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
+import { TodoItemProps } from './interfaces';
 
-interface TodoItem {
-  todo: any;
-  getTodo: any;
-  // setToggle: any;
-  deleteTodo: any;
-}
-const TodoItem = ({ todo, getTodo, deleteTodo }: TodoItem) => {
+
+const TodoItem = ({ todo, getTodo, deleteTodo }: TodoItemProps) => {
   return (
     <div className="todos-item" onClick={() => getTodo(todo.id)}>
       <h2 className="todos-item__title">{todo.title}</h2>
@@ -21,4 +17,5 @@ const TodoItem = ({ todo, getTodo, deleteTodo }: TodoItem) => {
     </div>
   );
 };
+
 export default TodoItem;
