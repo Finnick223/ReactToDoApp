@@ -1,5 +1,3 @@
-//Todo edytowania nie da sie przerwac ani opuscic
-
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Input from '../src/components/Input';

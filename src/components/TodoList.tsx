@@ -1,15 +1,6 @@
 import TodoItem from './TodoItems';
+import { TodoListProps, Todo } from './interfaces';
 
-interface Todo {
-  id: number;
-  title: string;
-}
-
-interface TodoListProps {
-  todos: Todo[];
-  getTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
-}
 
 const TodoList = ({ todos, getTodo, deleteTodo }: TodoListProps) => {
   return (

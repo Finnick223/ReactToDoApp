@@ -1,17 +1,6 @@
 import { useEffect, ChangeEvent, FormEvent, useState } from 'react';
+import { InputProps } from "./interfaces"
 
-interface Todo {
-  id: number | null;
-  title: string;
-}
-
-interface InputProps {
-  todo: Todo | null;
-  addTodo: (title: string) => void;
-  updateTodo: (id: number, title: string) => void;
-  inputs: { title: string };
-  setInputs: React.Dispatch<React.SetStateAction<{ title: string }>>;
-}
 
 const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
   const [inputs, setInputs] = useState({ title: '' });
@@ -27,6 +16,7 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
     const { title } = inputs;
     if (!todo?.id) {
       addTodo(title);
+      setInputs({ title: '' });
     } else {
       updateTodo(todo.id, title);
       todo.id=null;
