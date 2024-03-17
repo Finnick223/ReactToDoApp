@@ -1,10 +1,37 @@
 import { FaRegEdit, FaRegTrashAlt } from 'react-icons/fa';
 import { TodoItemProps } from './interfaces';
+import * as Icon from 'react-icons/fi';
+// @ts-ignore
+import Checkbox from 'react-custom-checkbox';
 
+const TodoItem = ({ todo, getTodo, deleteTodo, onToggle }: TodoItemProps) => {
 
-const TodoItem = ({ todo, getTodo, deleteTodo }: TodoItemProps) => {
+  const handleCheckboxChange = () => {
+    onToggle(todo.id); // Call the onToggle function with todo id
+  };
+
   return (
-    <div className="todos-item" onClick={() => getTodo(todo.id)}>
+    <div className="todos-item">
+      <Checkbox
+        checked={todo.checked}
+        onChange={handleCheckboxChange} 
+        icon={
+          <div
+            style={{
+              display: 'flex',
+              flex: 1,
+              backgroundColor: '#646cff',
+              alignSelf: 'stretch',
+            }}
+          >
+            <Icon.FiCheck color="white" size={28} />
+          </div>
+        }
+        borderColor="#174A41"
+        borderRadius={20}
+        style={{ overflow: 'hidden', marginRight: '10vw' }}
+        size={30}
+      />
       <h2 className="todos-item__title">{todo.title}</h2>
       <section>
         <button className="toolbox__btn" onClick={() => getTodo(todo.id)}>

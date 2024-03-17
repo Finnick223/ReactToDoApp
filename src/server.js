@@ -8,12 +8,15 @@ export function makeServer({ environment = 'test' } = {}) {
     seeds(server) {
         server.create('todo', {
             title: 'todo1',
+            checked: false,
         });
         server.create('todo', {
             title: 'todo2',
+            checked: true,
         });
         server.create('todo', {
             title: 'todo3',
+            checked: false,
         });
     },
     routes() {
