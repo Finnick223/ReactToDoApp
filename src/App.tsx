@@ -1,19 +1,28 @@
 import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Input from '../src/components/Input';
 import './index.css';
-import TodoList from './components/TodoList';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './components/Header';
+import Input from '../src/components/Input';
+import TodoList from './components/TodoList';
+import { Todo } from './components/interfaces';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [todo, setTodo] = useState({ id: 0, title: '' });
-  const [inputs, setInputs] = useState({ title: ''});
+  const [inputs, setInputs] = useState({ title: '' });
 
   useEffect(() => {
     getTodos();
   }, []);
+
+  const handleToggle = (id: number) => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    );
+    setTodos(updatedTodos);
+  };
+  
 
   const getTodos = () => {
     fetch('/api/todo')
@@ -27,7 +36,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setTodo(data.todos);
-        // setToggle(true);
       })
       .catch((error) => console.log('brak todo', error));
   };
@@ -46,7 +54,6 @@ function App() {
       .then((res) => {
         console.log(res.json());
         getTodos();
-        // setToggle(false);
         setInputs({ title: '' });
         toast.success('todo dodane');
       })
@@ -55,11 +62,11 @@ function App() {
         toast.error('error przy dodawaniu.');
       });
   };
-  
+
   const updateTodo = (id: number, title: string) => {
-    if(!title) {
+    if (!title) {
       toast.error('Please fill all the required input fields');
-      return
+      return;
     }
     fetch(`/api/todo/${id}`, {
       method: 'PATCH',
@@ -69,16 +76,15 @@ function App() {
     })
       .then(() => {
         getTodos();
-        // setToggle(false);
         toast.success('Todo zostalo zmienione.');
       })
       .catch((error) => {
         console.log('Note not found', error);
         toast.error('error przy zmianie.');
       });
-  }
+  };
 
-  const deleteTodo = (id: number) => {
+  const deleteTodo = (id: number | null) => {
     fetch(`/api/todo/${id}`, { method: 'DELETE' })
       .then(() => {
         getTodos();
@@ -89,29 +95,23 @@ function App() {
         toast.error('Error deleting note.');
       });
   };
-  
-
-  // const handleAdd = () => {
-  //   setInputs({ title: '', body: '' });
-  //   setNote([]);
-  //   setToggle(true);
-  // };
 
   return (
     <>
       <Header />
       <div className="newTodo">
-        <Input 
-        todo={todo} 
-        addTodo={addTodo} 
-        updateTodo={updateTodo} 
-        inputs={inputs} 
-        setInputs={setInputs} />
-        <TodoList
-          todos={todos}
-          getTodo={getTodo}
-          // setToggle={setToggle}
-          deleteTodo={deleteTodo}
+        <Input
+          todo={todo}
+          addTodo={addTodo}
+          updateTodo={updateTodo}
+          inputs={inputs}
+          setInputs={setInputs}
+        />
+        <TodoList 
+        todos={todos} 
+        getTodo={getTodo} 
+        deleteTodo={deleteTodo} 
+        onToggle={handleToggle}
         />
       </div>
       <ToastContainer

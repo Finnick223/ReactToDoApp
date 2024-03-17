@@ -1,6 +1,5 @@
 import { useEffect, ChangeEvent, FormEvent, useState } from 'react';
-import { InputProps } from "./interfaces"
-
+import { InputProps } from './interfaces';
 
 const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
   const [inputs, setInputs] = useState({ title: '' });
@@ -19,7 +18,7 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
       setInputs({ title: '' });
     } else {
       updateTodo(todo.id, title);
-      todo.id=null;
+      todo.id = null;
       setInputs({ title: '' });
     }
   };
