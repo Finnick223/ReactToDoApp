@@ -1,6 +1,4 @@
-interface FilterProps {
-  handleFilterChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { FilterProps } from "./interfaces";
 
 const Filter: React.FC<FilterProps> = ({ handleFilterChange }) => {
   return (
@@ -18,7 +16,6 @@ const Filter: React.FC<FilterProps> = ({ handleFilterChange }) => {
         <label className='filtering-buttons-input'>
           <input
             type="radio"
-            //   className='filtering-buttons-button'
             name="filter"
             value="pending"
             onChange={handleFilterChange}
@@ -28,7 +25,6 @@ const Filter: React.FC<FilterProps> = ({ handleFilterChange }) => {
         <label className='filtering-buttons-input'>
           <input
             type="radio"
-            //   className='filtering-buttons-button'
             name="filter"
             value="checked"
             onChange={handleFilterChange}

@@ -13,7 +13,7 @@ const TodoList = ({ todos, getTodo, deleteTodo, onToggle }: TodoListProps) => {
   };
 
   const filteredTodos = () => {
-    if (!todos) throw new Error('you dont have added todos');
+    if (!todos) throw new Error('you didnt added any todos');
     if (filter === 'all') {
       return todos;
     } else if (filter === 'pending') {

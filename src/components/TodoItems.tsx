@@ -7,7 +7,7 @@ import Checkbox from 'react-custom-checkbox';
 const TodoItem = ({ todo, getTodo, deleteTodo, onToggle }: TodoItemProps) => {
 
   const handleCheckboxChange = () => {
-    onToggle(todo.id); // Call the onToggle function with todo id
+    onToggle(todo.id);
   };
 
   return (

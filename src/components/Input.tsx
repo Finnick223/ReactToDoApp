@@ -40,7 +40,6 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
         onChange={handleChange}
         placeholder="Title"
         name="title"
-        required
       />
       <button type="submit" className="btn">
         {todo?.id ? 'Update Todo' : 'Add Todo'}
