@@ -25,3 +25,7 @@ export interface TodoListProps {
   deleteTodo: (id: number) => void;
   onToggle: (id: number) => void;
 }
+
+export interface FilterProps {
+  handleFilterChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}

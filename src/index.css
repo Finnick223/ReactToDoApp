@@ -29,7 +29,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 5vh 10%;
-  box-shadow: inset 0px 2px 12px 0px rgba(66, 68, 90, 1);
+  box-shadow: inset 0px 4px 22px 0px rgba(66, 68, 90, 1);
 }
 
 .newTodo{
@@ -39,6 +39,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  letter-spacing: 0.1em;
 }
 .todos-item {
   box-shadow: 0px 1px 4px 0px rgba(66, 68, 90, 1);
@@ -69,7 +70,7 @@ section {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: beige;
+  background-color: #646cff60;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -82,7 +83,7 @@ section {
 }
 
 .todos-item {
-  background-color: #646cff25;
+  background-color: #646cff15;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -113,7 +114,29 @@ section {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: beige;
+  background-color: #646cff60;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+.toolbox__btn {
+  background-color: #646cff10;
+}
+
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+  .newTodo input {
+    width: 60vw;
+  }
+  .todos-item {
+    width: 90vw;
+  }
+  .filtering-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+  .filtering-buttons-input {
+    width: 90vw;
+    display: inline-flex;
+    justify-content: flex-start;
+  }
 }
