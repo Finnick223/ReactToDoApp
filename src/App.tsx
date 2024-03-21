@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import Input from '../src/components/Input';
 import TodoList from './components/TodoList';
+import Counter from './components/Counter';
 import { Todo } from './components/interfaces';
 
 function App() {
@@ -113,6 +114,7 @@ function App() {
         deleteTodo={deleteTodo} 
         onToggle={handleToggle}
         />
+        <Counter todos={todos}/>
       </div>
       <ToastContainer
         position="top-right"
