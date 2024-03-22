@@ -27,7 +27,7 @@ const TodoList = ({ todos, getTodo, deleteTodo, onToggle }: TodoListProps) => {
     <>
       <div className="todos-container">
         {todos &&
-          filteredTodos().map((todo: Todo) => (
+          filteredTodos()!.map((todo: Todo) => (
             <TodoItem
               key={todo.id}
               todo={todo}
