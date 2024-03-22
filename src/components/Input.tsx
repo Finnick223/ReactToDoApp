@@ -35,7 +35,6 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
     <form className="inputForm" onSubmit={handleSubmit}>
       <input
         type="text"
-        className="newTodo-input"
         value={inputs.title}
         onChange={handleChange}
         placeholder="Title"

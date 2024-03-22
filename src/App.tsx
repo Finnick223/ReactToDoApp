@@ -12,6 +12,8 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [todo, setTodo] = useState({ id: 0, title: '' });
   const [inputs, setInputs] = useState({ title: '' });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
 
   useEffect(() => {
     getTodos();
@@ -97,17 +99,21 @@ function App() {
       });
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   return (
     <>
       <Header />
-      <div className="newTodo">
+      <div className={isDarkMode ? 'newTodo_dark-mode' : 'newTodo'}>
         <Input
           todo={todo}
           addTodo={addTodo}
           updateTodo={updateTodo}
           inputs={inputs}
           setInputs={setInputs}
-        />
+          />
         <TodoList 
         todos={todos} 
         getTodo={getTodo} 
@@ -115,6 +121,7 @@ function App() {
         onToggle={handleToggle}
         />
         <Counter todos={todos}/>
+      <button className="toggle-dark-button" onClick={toggleDarkMode}>Toggle Dark Mode</button>
       </div>
       <ToastContainer
         position="top-right"
@@ -122,7 +129,7 @@ function App() {
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
-      />
+        />
     </>
   );
 }
