@@ -7,15 +7,15 @@ export function makeServer({ environment = 'test' } = {}) {
     },
     seeds(server) {
         server.create('todo', {
-            title: 'todo1',
+            title: 'task1',
             checked: false,
         });
         server.create('todo', {
-            title: 'todo2',
+            title: 'task2',
             checked: true,
         });
         server.create('todo', {
-            title: 'todo3',
+            title: 'dupa',
             checked: false,
         });
     },
