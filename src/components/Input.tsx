@@ -18,6 +18,7 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
       setInputs({ title: '' });
     } else {
       updateTodo(todo.id, title);
+      // @ts-ignore
       todo.id = null;
       setInputs({ title: '' });
     }
@@ -41,7 +42,7 @@ const Input = ({ todo, addTodo, updateTodo }: InputProps) => {
         name="title"
       />
       <button type="submit" className="btn">
-        {todo?.id ? 'Update Todo' : 'Add Todo'}
+        {todo?.id ? 'Update Task' : 'Add Task'}
       </button>
     </form>
   );

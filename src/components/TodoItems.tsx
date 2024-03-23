@@ -11,7 +11,7 @@ const TodoItem = ({ todo, getTodo, deleteTodo, onToggle }: TodoItemProps) => {
   };
 
   return (
-    <div className="todos-item">
+    <div className="todo-item">
       <Checkbox
         checked={todo.checked}
         onChange={handleCheckboxChange} 
@@ -32,7 +32,7 @@ const TodoItem = ({ todo, getTodo, deleteTodo, onToggle }: TodoItemProps) => {
         style={{ overflow: 'hidden', marginRight: '10vw' }}
         size={30}
       />
-      <h2 className="todos-item__title">{todo.title}</h2>
+      <h2 className="todo-item__title">{todo.title}</h2>
       <section>
         <button className="toolbox__btn" onClick={() => getTodo(todo.id)}>
           <FaRegEdit color="black" size={20} />

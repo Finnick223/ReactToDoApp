@@ -6,19 +6,7 @@
   font-weight: 400;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  place-items: center; */
-  /* min-width: 320px;
-  min-height: 100vh; */
   height: 100vh;
   width: 100vw;
 }
@@ -31,8 +19,12 @@ header {
   padding: 5vh 10%;
   box-shadow: inset 0px 4px 22px 0px rgba(66, 68, 90, 1);
 }
+header h1 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
-.newTodo{
+.TodoContainer{
   background-color:snow;
   width: 100vw;
   height: 100vh;
@@ -42,7 +34,7 @@ header {
   letter-spacing: 0.1em;
 }
 
-.newTodo_dark-mode {
+.TodoContainer_dark-mode {
   background-color: #33353a;
   color: #ffffff;
   width: 100vw;
@@ -53,9 +45,6 @@ header {
   letter-spacing: 0.1em;
 }
 
-.todos-item {
-  box-shadow: 0px 1px 4px 0px rgba(66, 68, 90, 1);
-}
 section {
   flex-direction: row;
   margin: 3vh 0;
@@ -64,7 +53,7 @@ section {
 .inputForm {
   margin-top: 4vh;
 }
-.newTodo input {
+.TodoContainer input {
   border-radius: 3px;
   border: 1px solid black;
   padding: 0.6em 1.2em;
@@ -75,7 +64,7 @@ section {
   cursor: pointer;
   width: 40vw;
 }
-.newTodo .btn {
+.TodoContainer .btn {
   border-radius: 3px;
   border: 1px solid black;
   padding: 0.6em 1.2em;
@@ -86,18 +75,18 @@ section {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.newTodo .btn :hover {
+.TodoContainer .btn :hover {
   border-color: #646cff;
 }
-.newTodo .btn :focus,
-.newTodo .btn :focus-visible {
+.TodoContainer .btn :focus,
+.TodoContainer .btn :focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
 
 
 
-.newTodo_dark-mode input {
+.TodoContainer_dark-mode input {
   border-radius: 3px;
   border: 1px solid black;
   padding: 0.6em 1.2em;
@@ -109,7 +98,7 @@ section {
   cursor: pointer;
   width: 40vw;
 }
-.newTodo_dark-mode .btn {
+.TodoContainer_dark-mode .btn {
   border-radius: 3px;
   border: 1px solid black;
   padding: 0.6em 1.2em;
@@ -121,15 +110,15 @@ section {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.newTodo_dark-mode .btn :hover {
+.TodoContainer_dark-mode .btn :hover {
   border-color: #646cff;
 }
-.newTodo_dark-mode .btn :focus,
-.newTodo_dark-mode .btn :focus-visible {
+.TodoContainer_dark-mode .btn :focus,
+.TodoContainer_dark-mode .btn :focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.newTodo .todos-item {
+.TodoContainer .todo-item {
   background-color: #646cff15;
   display: flex;
   align-items: center;
@@ -137,8 +126,9 @@ section {
   width: 50vw;
   margin: 2% 0;
   padding: 0 10%;
+  box-shadow: 0px 1px 4px 0px rgba(66, 68, 90, 1);
 }
-.newTodo_dark-mode .todos-item {
+.TodoContainer_dark-mode .todo-item {
   background-color: gray;
   display: flex;
   align-items: center;
@@ -146,9 +136,10 @@ section {
   width: 50vw;
   margin: 2% 0;
   padding: 0 10%;
+  box-shadow: 0px 1px 4px 0px rgb(255, 255, 255);
 }
 
-.todos-item__title{
+.todo-item__title{
   margin-right: auto;
 }
 
@@ -158,6 +149,9 @@ section {
 
 .filtering-buttons {
   display: inline-flex;
+}
+.filtering-buttons input[type="radio"]{
+  display: none;
 }
 
 .filtering-buttons-input {
@@ -191,24 +185,24 @@ section {
   transition: border-color 0.25s;
   margin-top: 10%;
 }
-.newTodo_dark-mode .toggle-dark-button {
+.TodoContainer_dark-mode .toggle-dark-button {
   color: white;
 }
-.newTodo .toggle-dark-button {
+.TodoContainer .toggle-dark-button {
   color: black;
 }
 @media only screen and (max-width: 600px) {
-  /* For mobile phones: */
-  .newTodo input {
+  /* For mobile screen: */
+  .TodoContainer input {
     width: 60vw;
   }
-  .newTodo_dark-mode input {
+  .TodoContainer_dark-mode input {
     width: 60vw;
   }
-  .newTodo .todos-item {
+  .TodoContainer .todos-item {
     width: 90vw;
   }
-  .newTodo_dark-mode .todos-item {
+  .TodoContainer_dark-mode .todos-item {
     width: 90vw;
   }
   .filtering-buttons {
