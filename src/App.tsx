@@ -106,7 +106,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className={isDarkMode ? 'newTodo_dark-mode' : 'newTodo'}>
+      <div className={isDarkMode ? 'TodoContainer_dark-mode' : 'TodoContainer'}>
         <Input
           todo={todo}
           addTodo={addTodo}
